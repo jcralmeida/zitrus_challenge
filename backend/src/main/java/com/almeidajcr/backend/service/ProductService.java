@@ -41,7 +41,7 @@ public class ProductService {
    * @return The registered object.
    */
   public Product save(ProductInputDto productInputDto) {
-    Product product = new Product().builder()
+    Product product = Product.builder()
         .description(productInputDto.getDescription())
         .code(UUID.randomUUID())
         .type(productInputDto.getType())
