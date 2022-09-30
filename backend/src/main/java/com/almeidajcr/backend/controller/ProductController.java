@@ -1,9 +1,12 @@
 package com.almeidajcr.backend.controller;
 
 import com.almeidajcr.backend.converter.ProductMapper;
+import com.almeidajcr.backend.dto.FilteringByTypeDto;
 import com.almeidajcr.backend.dto.ProductDto;
 import com.almeidajcr.backend.dto.ProductInputDto;
+import com.almeidajcr.backend.dto.ProfitDto;
 import com.almeidajcr.backend.entity.Product;
+import com.almeidajcr.backend.enums.ProductTypeEnum;
 import com.almeidajcr.backend.service.ProductService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -44,6 +48,38 @@ public class ProductController {
   }
 
   /**
+   * Define the GET endpoint to retrieve the necessary information
+   * about product stocks and sales.
+   *
+   * @param typeEnum the type of the Product used in the filtering.
+   *
+   * @return A list of {@link FilteringByTypeDto}.
+   */
+  @GetMapping("/products/filtering")
+  public ResponseEntity<List<FilteringByTypeDto>> getAll(
+      @RequestParam(name = "type") ProductTypeEnum typeEnum) {
+    List<FilteringByTypeDto> products = productService.getAllByTypeFiltering(typeEnum);
+
+    return new ResponseEntity<>(products, HttpStatus.OK);
+  }
+
+  /**
+   * Define the GET endpoint to retrieve information about profit and
+   * the amount of product that was sold. It is necessary to pass the id
+   * of the product in the path.
+   *
+   * @param id  the product id.
+   *
+   * @return a {@link ProfitDto} response.
+   */
+  @GetMapping("/products/{id}/profit")
+  public ResponseEntity<ProfitDto> getProfitFromProduct(@PathVariable Long id) {
+    ProfitDto profitByProduct = productService.getProfitByProduct(id);
+
+    return ResponseEntity.ok().body(profitByProduct);
+  }
+
+  /**
    * Define the POST endpoint for the {@link Product}.
    *
    * @param productInputDto The income request.
@@ -53,7 +89,6 @@ public class ProductController {
   @PostMapping("/products")
   public ResponseEntity<ProductDto> save(@RequestBody ProductInputDto productInputDto) {
     Product product = productService.save(productInputDto);
-
 
     return new ResponseEntity<>(productMapper.toProductDto(product), HttpStatus.CREATED);
   }

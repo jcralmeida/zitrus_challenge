@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Set;
 import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -47,5 +46,5 @@ public class Product implements Serializable {
   @Enumerated(EnumType.STRING)
   private ProductTypeEnum type;
   private BigDecimal value;
-  private long amount;
+  private Long amount;
 }

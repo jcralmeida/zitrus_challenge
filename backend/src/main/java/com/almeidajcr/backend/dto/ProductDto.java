@@ -3,7 +3,6 @@ package com.almeidajcr.backend.dto;
 import com.almeidajcr.backend.enums.ProductTypeEnum;
 import java.math.BigDecimal;
 import java.util.UUID;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

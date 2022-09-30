@@ -1,13 +1,15 @@
 package com.almeidajcr.backend.service;
 
+import com.almeidajcr.backend.dto.FilteringByTypeDto;
 import com.almeidajcr.backend.dto.ProductInputDto;
+import com.almeidajcr.backend.dto.ProfitDto;
 import com.almeidajcr.backend.entity.Product;
+import com.almeidajcr.backend.enums.ProductTypeEnum;
 import com.almeidajcr.backend.exception.NotFoundException;
 import com.almeidajcr.backend.repository.ProductRepository;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,14 @@ public class ProductService {
 
   public List<Product> readAll() {
     return productRepository.findAll();
+  }
+
+  public List<FilteringByTypeDto> getAllByTypeFiltering(ProductTypeEnum typeEnum) {
+    return productRepository.findAllByTypeNative(typeEnum.toString());
+  }
+
+  public ProfitDto getProfitByProduct(Long productId) {
+    return productRepository.findProfitByProductNative(productId);
   }
 
   /**
