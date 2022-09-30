@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StockMovementDto {
-  private int id;
+  private Integer id;
   private BigDecimal saleValue;
   private ActionEnum movement;
   private Long amount;
   private Date salesDate;
-  private int productId;
+  private Integer productId;
 }

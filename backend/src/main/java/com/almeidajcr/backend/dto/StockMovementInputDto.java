@@ -20,5 +20,5 @@ public class StockMovementInputDto {
   private ActionEnum movement;
   private Long amount;
   private Date salesDate;
-  private int productId;
+  private Integer productId;
 }

@@ -101,7 +101,7 @@ public class ProductController {
    * @return The response object with its actual {@link HttpStatus}.
    */
   @DeleteMapping("products/{id}")
-  public ResponseEntity delete(@PathVariable("id") int productId) {
+  public ResponseEntity<?> delete(@PathVariable("id") Integer productId) {
     productService.delete(productId);
 
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);

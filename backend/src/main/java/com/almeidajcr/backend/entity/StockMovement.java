@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 public class StockMovement {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
 
   private BigDecimal saleValue;
 
@@ -43,7 +43,7 @@ public class StockMovement {
   @Enumerated(EnumType.STRING)
   private ActionEnum movement;
 
-  private long amount;
+  private Long amount;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "product_id", nullable = false)

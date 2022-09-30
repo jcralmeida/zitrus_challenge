@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 public class Product implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
 
   @Column(unique = true)
   private UUID code;

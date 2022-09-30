@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
-  private int id;
+  private Integer id;
   private UUID code;
   private String description;
   private ProductTypeEnum type;
   private BigDecimal value;
-  private long amount;
+  private Long amount;
 }
