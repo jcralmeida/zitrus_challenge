@@ -115,7 +115,7 @@ public class ProductController {
    * @return The response object with its actual {@link HttpStatus}.
    */
   @PatchMapping("products/{id}")
-  public ResponseEntity updateProduct(@PathVariable("id") int productId,
+  public ResponseEntity<?> updateProduct(@PathVariable("id") Integer productId,
                                       @RequestBody ProductInputDto productInputDto) {
     productService.update(productId, productInputDto);
 
