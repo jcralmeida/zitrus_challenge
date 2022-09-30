@@ -46,5 +46,5 @@ public class Product implements Serializable {
   @Enumerated(EnumType.STRING)
   private ProductTypeEnum type;
   private BigDecimal value;
-  private long amount;
+  private Long amount;
 }
