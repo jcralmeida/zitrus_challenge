@@ -41,7 +41,7 @@ public class ProductService {
    * @return The registered object.
    */
   public Product save(ProductInputDto productInputDto) {
-    Product product = new Product().builder()
+    Product product = Product.builder()
         .description(productInputDto.getDescription())
         .code(UUID.randomUUID())
         .type(productInputDto.getType())
@@ -57,7 +57,7 @@ public class ProductService {
    *
    * @param productId the product identifier.
    */
-  public void delete(int productId) {
+  public void delete(Integer productId) {
     Product product = getProductById(productId);
 
     productRepository.delete(product);
@@ -87,7 +87,7 @@ public class ProductService {
     }
   }
 
-  private Product getProductById(int productId) {
+  private Product getProductById(Integer productId) {
     return productRepository.findById(productId)
         .orElseThrow(() -> new NotFoundException("Produto não encontrado"));
   }
