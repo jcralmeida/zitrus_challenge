@@ -1,3 +1,5 @@
+const development = process.env.NODE_ENV !== 'production'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -27,6 +29,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    "@nuxtjs/fontawesome",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -37,10 +40,17 @@ export default {
     '@nuxtjs/axios',
   ],
 
+  fontawesome: {
+    icons: {
+      solid: true,
+      brands: true,
+    },
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: development ? 'http://localhost:8080/api/' : 'http://restapp:8080/api/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
