@@ -1,5 +1,8 @@
 <template>
-  <Tutorial />
+  <div>
+    <NavBarComponent/>
+    <ListProducts />
+  </div>
 </template>
 
 <script lang="ts">
